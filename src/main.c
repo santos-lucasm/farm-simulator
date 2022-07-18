@@ -6,7 +6,7 @@ int main(void) {
  
    InitWindow(SCREEN_W, SCREEN_H, "Testing");
    SetTargetFPS(75);
-   
+   Texture2D texture = LoadTexture("assets/apple.png");
    player_t * player = create_player();
    Camera2D * camera = create_camera();
 
@@ -18,6 +18,11 @@ int main(void) {
          BeginMode2D(*camera);
             update_player(player);
             draw_player(player);
+            DrawTexture(texture,
+                  10,
+                  10,
+                  BLACK
+            );
          EndMode2D();
       EndDrawing();
    }
