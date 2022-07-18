@@ -1,0 +1,13 @@
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+include/CMakeFiles/
+include/Makefile
+include/cmake_install.cmake
+include/libplayer.a
+include/libcamera.a
+src/CMakeFiles
+src/Makefile
+src/cmake_install.cmake
+src/farm-sim
