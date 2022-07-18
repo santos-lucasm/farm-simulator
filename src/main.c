@@ -16,6 +16,7 @@ int main(void) {
          ClearBackground(RAYWHITE);
          DrawFPS(0, 0);
          BeginMode2D(*camera);
+            update_player(player);
             draw_player(player);
          EndMode2D();
       EndDrawing();
