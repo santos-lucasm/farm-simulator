@@ -1,24 +1,23 @@
 #include <stdio.h>
 #include "player.h"
-
-#define SCREEN_W 800
-#define SCREEN_H 800
+#include "camera.h"
 
 int main(void) {
-   
-   printf("Starting...\n");
  
    InitWindow(SCREEN_W, SCREEN_H, "Testing");
    SetTargetFPS(75);
    
    player_t * player = create_player();
+   Camera2D * camera = create_camera();
 
    while(!WindowShouldClose())
    {
       BeginDrawing();
-      ClearBackground(RAYWHITE);
-      DrawFPS(0, 0);
-      draw_player(player);
+         ClearBackground(RAYWHITE);
+         DrawFPS(0, 0);
+         BeginMode2D(*camera);
+            draw_player(player);
+         EndMode2D();
       EndDrawing();
    }
 
