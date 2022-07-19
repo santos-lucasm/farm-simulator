@@ -6,7 +6,8 @@ int main(void) {
  
    InitWindow(SCREEN_W, SCREEN_H, "Testing");
    SetTargetFPS(75);
-   Texture2D texture = LoadTexture("assets/apple.png");
+   Image im = LoadImage("assets/vacaroxa/rpg-pack/chars/sensei/sensei.png");
+   Texture2D texture = LoadTextureFromImage(im);
    player_t * player = create_player();
    Camera2D * camera = create_camera();
 
@@ -18,11 +19,9 @@ int main(void) {
          BeginMode2D(*camera);
             update_player(player);
             draw_player(player);
-            DrawTexture(texture,
-                  10,
-                  10,
-                  BLACK
-            );
+
+            DrawTextureEx(texture, (Vector2){0.0f, 0.0f}, 0.0f, 1.0f, WHITE);
+
          EndMode2D();
       EndDrawing();
    }
