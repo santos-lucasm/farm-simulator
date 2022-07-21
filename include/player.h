@@ -9,9 +9,10 @@ typedef struct
    float height;
    float speed;
    Color color;
+   Texture2D texture;
 } player_t;
 
-player_t* create_player();
+player_t * create_player();
 
 void update_player(player_t * self);
 

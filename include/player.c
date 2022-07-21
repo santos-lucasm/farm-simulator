@@ -1,14 +1,21 @@
 #include <stdlib.h>
 #include "player.h"
 
-player_t* create_player()
+player_t * create_player()
 {
    player_t * p = malloc(sizeof(player_t));
-   p->pos = (Vector2) {0.0f, 0.0f};
-   p->width = 20.f;
-   p->height = 30.f;
-   p->speed = 50.0f;
-   p->color = RED;
+
+   if(NULL != p)
+   {
+      p->pos = (Vector2) {0.0f, 0.0f};
+      p->width = 20.f;
+      p->height = 30.f;
+      p->speed = 50.0f;
+      p->color = RED;
+
+      Image im = LoadImage("assets/gameboy_char/loose_sprites.png");
+      p->texture = LoadTextureFromImage(im);
+   }
    return p;
 }
 
@@ -28,12 +35,10 @@ void draw_player(player_t * self)
 {
    if(NULL != self)
    {
-      DrawRectangle(
-         self->pos.x,
-         self->pos.y,
-         self->width,
-         self->height,
-         self->color
-      );
+      Rectangle source = {0};
+      source.width = 16;
+      source.height = 16;
+      DrawTextureRec(self->texture, source,
+         (Vector2){self->pos.x, self->pos.y}, WHITE);
    }   
 }
