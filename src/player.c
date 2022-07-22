@@ -13,7 +13,7 @@ player_t * create_player()
         p->speed = 50.0f;
         p->color = RED;
 
-        Image im = LoadImage("assets/gameboy/gb_player.png");
+        Image im = LoadImage("../assets/gameboy/gb_player.png");
         p->texture = LoadTextureFromImage(im);
     }
     return p;

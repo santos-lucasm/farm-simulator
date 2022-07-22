@@ -26,7 +26,9 @@ sudo make install PLATFORM=PLATFORM_DESKTOP RAYLIB_LIBTYPE=SHARED GRAPHICS=GRAPH
 
 - Compile and run game
 ```
-cmake .
+mkdir build
+cd build
+cmake ../
 make
 ./src/farm-sim
 ```
