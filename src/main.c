@@ -4,29 +4,26 @@
 
 int main(void) {
  
-   InitWindow(SCREEN_W, SCREEN_H, "Testing");
+   InitWindow(SCREEN_W, SCREEN_H, "farm-simulator");
    SetTargetFPS(75);
 
    player_t * player = create_player();
-   Camera2D * camera = create_camera();
+   world_camera_t * world_cam = create_world_camera();
 
-   bool zoom_in_anim = true;
    while(!WindowShouldClose())
    {
-      if(zoom_in_anim)
-         zoom_in_anim = entry_zoom_in(camera);
-
       BeginDrawing();
          ClearBackground(RAYWHITE);
          DrawFPS(0, 0);
-         BeginMode2D(*camera);
+         BeginMode2D(*world_cam->camera);
             update_player(player);
             draw_player(player);
+            update_camera(world_cam);
          EndMode2D();
       EndDrawing();
    }
 
-   free(camera);
+   destroy_world_camera(world_cam);
    free(player);
 
    CloseWindow();
