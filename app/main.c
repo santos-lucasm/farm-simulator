@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "player.h"
 #include "camera.h"
+#include "world.h"
 
 int main(void)
 { 
@@ -13,13 +14,17 @@ int main(void)
     while(!WindowShouldClose())
     {
         BeginDrawing();
+
             ClearBackground(RAYWHITE);
             DrawFPS(0, 0);
+            draw_grid();
+
             BeginMode2D(*world_cam->camera);
-            update_player(player);
-            draw_player(player);
-            update_camera(world_cam);
+                update_player(player);
+                draw_player(player);
+                update_camera(world_cam);
             EndMode2D();
+
         EndDrawing();
     }
 

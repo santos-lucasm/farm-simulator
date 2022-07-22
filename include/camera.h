@@ -36,6 +36,7 @@ void update_camera(world_camera_t * self);
 //------------------------------------------------------------------------------------
 /*! @brief ZoomIn animation when wordl_camera is created
     @param self pointer to itself
+    TODO: Add max zoom as world_camera_t parameter
 */
 void event_entry_zoomIn(world_camera_t * self);
 //------------------------------------------------------------------------------------
