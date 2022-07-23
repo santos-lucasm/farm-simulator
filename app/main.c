@@ -8,8 +8,9 @@ int main(void)
     InitWindow(SCREEN_W, SCREEN_H, "farm-simulator");
     SetTargetFPS(75);
 
-    player_t * player = create_player();
-    world_camera_t * world_cam = create_world_camera();
+    const Vector2 playerStartPos = (Vector2) {SCREEN_W/2, SCREEN_H/2};
+    player_t * player = create_player(playerStartPos);
+    world_camera_t * world_cam = create_world_camera(playerStartPos);
 
     while(!WindowShouldClose())
     {
@@ -17,12 +18,11 @@ int main(void)
 
             ClearBackground(RAYWHITE);
             DrawFPS(0, 0);
-            draw_grid();
-
             BeginMode2D(*world_cam->camera);
+                draw_grid();
                 update_player(player);
                 draw_player(player);
-                update_camera(world_cam);
+                update_camera(world_cam, player->pos);
             EndMode2D();
 
         EndDrawing();
