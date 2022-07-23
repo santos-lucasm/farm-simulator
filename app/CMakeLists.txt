@@ -5,6 +5,6 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 add_executable(farm-sim main.c)
 
 target_link_libraries(farm-sim
-   player camera
+   player camera world
    libraylib.so
 )
