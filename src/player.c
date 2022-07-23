@@ -1,15 +1,15 @@
 #include <stdlib.h>
 #include "player.h"
 //------------------------------------------------------------------------------------
-player_t * create_player()
+player_t * create_player(const Vector2 startPos)
 {
     player_t * p = malloc(sizeof(player_t));
 
     if(NULL != p)
     {
-        p->pos = (Vector2) {0.0f, 0.0f};
-        p->width = 20.f;
-        p->height = 30.f;
+        p->pos = startPos;
+        p->width = 16.0f;
+        p->height = 16.0f;
         p->speed = 50.0f;
         p->color = RED;
 
