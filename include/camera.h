@@ -13,30 +13,41 @@ typedef struct
     bool entryZoomIn;
 } world_camera_t;
 //------------------------------------------------------------------------------------
-/*! @brief init world_camera_t
-    @return Pointer to created obj, NULL if failed
-*/
-world_camera_t * create_world_camera();
+/**
+ * @brief Create a world camera object
+ * 
+ * @param targetPos Target position that camera will point to
+ * @return world_camera_t* Ref to created object, or NULL if failed
+ */
+world_camera_t * create_world_camera(const Vector2 targetPos);
 //------------------------------------------------------------------------------------
-/*! @brief deallocates obj memory
-    @param self pointer to itself
-*/
+/**
+ * @brief Handles dynamic memory allocation for world camera
+ * 
+ * @param self world camera to be destroyed
+ */
 void destroy_world_camera(world_camera_t * self);
 //------------------------------------------------------------------------------------
-/*! @brief Create raylib std Camera2D
-    @return Pointer to created obj, NULL if failed
-*/
-Camera2D * create2D_camera();
+/**
+ * @brief Create a 2D camera object
+ * 
+ * @param targetPos Target position that camera will point to
+ * @return Camera2D* Ref to created object, or NULL if failed
+ */
+Camera2D * create2D_camera(const Vector2 targetPos);
 //------------------------------------------------------------------------------------
-/*! @brief Called each frame to move camera
-    @param self pointer to itself
-    TODO: Receive target position to be followed
-*/
-void update_camera(world_camera_t * self);
+/**
+ * @brief Called each frame to update camera target and offset
+ * 
+ * @param self Camera to be updated
+ * @param targetPos Target position that camera should follow
+ */
+void update_camera(world_camera_t * self, const Vector2 targetPos);
 //------------------------------------------------------------------------------------
-/*! @brief ZoomIn animation when wordl_camera is created
-    @param self pointer to itself
-    TODO: Add max zoom as world_camera_t parameter
-*/
+/**
+ * @brief Zoomin animation at world camera creation in a new scene
+ * 
+ * @param self Camera to run event
+ */
 void event_entry_zoomIn(world_camera_t * self);
 //------------------------------------------------------------------------------------
