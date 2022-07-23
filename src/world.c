@@ -53,18 +53,18 @@ void draw_grid(world_t * self, const float step)
     }
 }
 //------------------------------------------------------------------------------------
-void draw_grass(world_t * world, const Vector2 pos)
+void draw_grass(world_t * self, const Vector2 pos)
 {
-    if(NULL != world)
+    if(NULL != self)
     {
         // Create rectangle that contains texture coordinates
         Rectangle source = {0};
-        source.x = world->grass.texturePos.x;
-        source.y = world->grass.texturePos.y;
-        source.width = world->grass.size.x;
-        source.height = world->grass.size.y;
+        source.x = self->grass.texturePos.x;
+        source.y = self->grass.texturePos.y;
+        source.width = self->grass.size.x;
+        source.height = self->grass.size.y;
 
-        DrawTextureRec(world->grass.texture, source, pos, WHITE);
+        DrawTextureRec(self->grass.texture, source, pos, WHITE);
     }
 }
 //------------------------------------------------------------------------------------
