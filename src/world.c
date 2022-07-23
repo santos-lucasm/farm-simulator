@@ -1,13 +1,41 @@
+#include <stdlib.h>
 #include "world.h"
 //------------------------------------------------------------------------------------
-void draw_grid()
+world_t * create_world(const Vector2 size)
 {
-    float step = 16.0f;
+    world_t * world = malloc(sizeof(world_t));
+    if(NULL != world)
+    {
+        world->size = size;
 
+        world->grass = create_tile("../assets/gameboy/gb_tilesheet.png",
+            (Vector2){352.0f, 192.f}, (Vector2){16.0f,  16.0f}, false);
+
+        world->path = create_tile("../assets/gameboy/gb_tilesheet.png", 
+            (Vector2){368.0f, 160.f}, (Vector2){16.0f,  16.0f}, false);
+    }
+    return world;
+}
+//------------------------------------------------------------------------------------
+void destroy_world(world_t * self)
+{
+    UnloadTexture(self->grass.texture);
+    UnloadTexture(self->path.texture); 
+    free(self);
+}
+//------------------------------------------------------------------------------------
+void draw_world(world_t * self)
+{
+    draw_grid(self, 16.0f);
+    draw_grass(self, (Vector2) {0.0f, 0.0f});
+}
+//------------------------------------------------------------------------------------
+void draw_grid(world_t * self, const float step)
+{
     // Draw horizontal lines
     Vector2 startPos = (Vector2) {0.0f, 0.0f};
-    Vector2 endPos = (Vector2) {WORLD_WIDTH, 0.0f};
-    while(WORLD_HEIGHT >= endPos.y)
+    Vector2 endPos = (Vector2) {self->size.x, 0.0f};
+    while(self->size.y >= endPos.y)
     {
         DrawLineV(startPos, endPos, PINK);
         startPos.y += step;
@@ -16,8 +44,8 @@ void draw_grid()
 
     // Draw vertical lines
     startPos = (Vector2) {0.0f, 0.0f};
-    endPos = (Vector2) {0.0f, WORLD_HEIGHT};
-    while(WORLD_WIDTH >= endPos.x)
+    endPos = (Vector2) {0.0f, self->size.y};
+    while(self->size.x >= endPos.x)
     {
         DrawLineV(startPos, endPos, PINK);
         startPos.x += step;
@@ -25,3 +53,19 @@ void draw_grid()
     }
 }
 //------------------------------------------------------------------------------------
+void draw_grass(world_t * world, const Vector2 pos)
+{
+    if(NULL != world)
+    {
+        // Create rectangle that contains texture coordinates
+        Rectangle source = {0};
+        source.x = world->grass.texturePos.x;
+        source.y = world->grass.texturePos.y;
+        source.width = world->grass.size.x;
+        source.height = world->grass.size.y;
+
+        DrawTextureRec(world->grass.texture, source, pos, WHITE);
+    }
+}
+//------------------------------------------------------------------------------------
+
