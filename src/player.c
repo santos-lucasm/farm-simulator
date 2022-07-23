@@ -8,19 +8,17 @@ player_t * create_player(const Vector2 startPos)
     if(NULL != p)
     {
         p->pos = startPos;
-        p->width = 16.0f;
-        p->height = 16.0f;
         p->speed = 50.0f;
         p->color = RED;
-
-        Image im = LoadImage("../assets/gameboy/gb_player.png");
-        p->texture = LoadTextureFromImage(im);
+        p->tile = create_tile("../assets/gameboy/gb_player.png", (Vector2) {0.0f, 0.0f},
+            (Vector2) {16.0f, 16.0f}, true);
     }
     return p;
 }
 //------------------------------------------------------------------------------------
 void destroy_player(player_t * self)
 {
+    UnloadTexture(self->tile.texture);
     free(self);
 }
 //------------------------------------------------------------------------------------
@@ -47,11 +45,14 @@ void draw_player(player_t * self)
 {
     if(NULL != self)
     {
+        // Create rectangle that contains texture coordinates
         Rectangle source = {0};
-        source.width = 16;
-        source.height = 16;
-        DrawTextureRec(self->texture, source,
-            (Vector2){self->pos.x, self->pos.y}, WHITE);
-    }   
+        source.x = self->tile.texturePos.x;
+        source.y = self->tile.texturePos.y;
+        source.width = self->tile.size.x;
+        source.height = self->tile.size.y;
+
+        DrawTextureRec(self->tile.texture, source, self->pos, WHITE);
+    }
 }
 //------------------------------------------------------------------------------------

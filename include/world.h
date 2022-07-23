@@ -11,7 +11,7 @@ typedef struct
 } world_t;
 //------------------------------------------------------------------------------------
 /**
- * @brief           Create a world object
+ * @brief Create a world object
  * 
  * @param size      World size
  * @return world_t* Ref to created object, NULL if failed
@@ -22,21 +22,21 @@ typedef struct
 world_t * create_world(const Vector2 size);
 //------------------------------------------------------------------------------------
 /**
- * @brief       Handles memory allocation and unload textures
+ * @brief Handles memory allocation and unload textures
  * 
- * @param self  World to be destroyed
+ * @param self World to be destroyed
  */
 void destroy_world(world_t * self);
 //------------------------------------------------------------------------------------
 /**
- * @brief       Draw world in screen
+ * @brief Draw world in screen
  * 
  * @param self World to be draw
  */
 void draw_world(world_t * self);
 //------------------------------------------------------------------------------------
 /**
- * @brief       Draw grid of world size
+ * @brief Draw grid of world size
  * 
  * @param self  Use world size
  * @param step  Space size in x and y between grid lines
@@ -44,7 +44,7 @@ void draw_world(world_t * self);
 void draw_grid(world_t * self, const float step);
 //------------------------------------------------------------------------------------
 /**
- * @brief       Draw grass tile stored in world
+ * @brief Draw grass tile stored in world
  * 
  * @param self  Use world stored grass tile
  * @param pos   Tile draw position
