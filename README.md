@@ -5,8 +5,9 @@ Getting used to C again and learning how to develop games from scratch without g
 [WIP]
 - Gameboy inspired graphics
 
-<img src="assets/demo/curr_demo.png" alt="drawing" width="512"/>
-<!-- ![Current game state](assets/demo/curr_demo.png) -->
+<p align="center">
+    <img src="assets/demo/curr_demo.png" alt="drawing" width="700"/>
+</p>
 
 ## Dependencies
 
