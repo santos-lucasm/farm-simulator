@@ -8,6 +8,9 @@ typedef struct
     Vector2 size;
     tile_t grass;
     tile_t path;
+    int n_columns;
+    int n_rows;
+    int ** grid;
 } world_t;
 //------------------------------------------------------------------------------------
 /**
@@ -27,6 +30,10 @@ world_t * create_world(const Vector2 size);
  * @param self World to be destroyed
  */
 void destroy_world(world_t * self);
+//------------------------------------------------------------------------------------
+void init_world(world_t * self);
+//------------------------------------------------------------------------------------
+int generate_tile();
 //------------------------------------------------------------------------------------
 /**
  * @brief Draw world in screen
@@ -49,5 +56,5 @@ void draw_grid(world_t * self, const float step);
  * @param self  Use world stored grass tile
  * @param pos   Tile draw position
  */
-void draw_grass(world_t * self, const Vector2 pos);
+void draw_tile(tile_t tile, const Vector2 pos);
 //------------------------------------------------------------------------------------
