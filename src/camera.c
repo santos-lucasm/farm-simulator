@@ -2,6 +2,8 @@
 //------------------------------------------------------------------------------------
 world_camera_t * create_world_camera(const Vector2 targetPos)
 {
+    //TODO: Verify targetPos boundaries
+    //TODO: Add error log for out of memory
     world_camera_t * wc = (world_camera_t *) malloc( sizeof(world_camera_t) );
     if(NULL != wc)
     {
@@ -19,6 +21,8 @@ void destroy_world_camera(world_camera_t * self)
 //------------------------------------------------------------------------------------
 Camera2D * create2D_camera(const Vector2 targetPos)
 {
+    //TODO: Verify targetPos boundaries
+    //TODO: Add error log for out of memory  
     Camera2D * c = (Camera2D *) malloc( sizeof(Camera2D) );
     if(NULL != c)
     {
@@ -32,6 +36,7 @@ Camera2D * create2D_camera(const Vector2 targetPos)
 //------------------------------------------------------------------------------------
 void update_camera(world_camera_t * self, const Vector2 targetPos)
 {
+    //TODO: Verify targetPos boundaries
     if(NULL != self)
     {
         if(self->entryZoomIn)
@@ -44,6 +49,7 @@ void update_camera(world_camera_t * self, const Vector2 targetPos)
 //------------------------------------------------------------------------------------
 void event_entry_zoomIn(world_camera_t * self)
 {
+    //TODO: Verify self ref
     if(3.0f <= self->camera->zoom)
     {
         self->camera->zoom = 3.0f;

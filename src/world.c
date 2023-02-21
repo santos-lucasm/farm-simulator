@@ -112,6 +112,8 @@ void draw_grid(world_t * self, const float step)
 //------------------------------------------------------------------------------------
 void draw_tile(tile_t tile, const Vector2 pos)
 {
+    //TODO: Verify pos boundaries
+
     // Create rectangle that contains texture coordinates
     Rectangle source = {0};
     source.x = tile.texturePos.x;

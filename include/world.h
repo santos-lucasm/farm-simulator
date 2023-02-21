@@ -3,8 +3,10 @@
 #include <raylib.h>
 #include "tile.h"
 //------------------------------------------------------------------------------------
+//TODO: Use a macro to define game size instead of receive it as an arg in functions
 typedef struct
 {
+    //TODO: Move tile_t from here to a graphic interface
     Vector2 size;
     tile_t grass;
     tile_t path;
